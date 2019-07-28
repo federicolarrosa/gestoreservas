@@ -1,0 +1,68 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}   
+
+<section>
+
+{% for reserva in reservas %}
+<div class="row light-bg detail-options-wrap justify-content-center">
+    <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">
+        <div class="featured-place-wrap">
+            <a href="{% url 'reserva-detalles' pk=reserva.pk %}"> 
+               
+                <div class="featured-title-box">
+                    <h6>Restaurante: {{reserva.restaurante}}
+                        <hr>
+                        Numero de reserva: {{reserva.pk}}
+                    </h6>
+                    
+                    
+                    <ul>
+                        <li>
+                            
+                            <p>Hora: {{reserva.hora}}</p>
+                        </li>
+                        <li>
+                           
+                            <p>Dia: {{reserva.dia}}</p>
+                        </li>
+                        <li>
+                            
+                            <p>Personas: {{reserva.personas}}</p>
+                        </li>
+                    </ul>
+                                
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="justify-content-center">
+        {% endfor %}   
+        {% if is_paginated %}  
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1"> Primera</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number}}"> Anterior</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="btn btn-info mb-4" href="?page={{num}}"> {{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{num}}"> {{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number}}"> Siguiente</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages}}"> Ultima </a>
+            {% endif %}
+
+        {% endif %}  
+</div>
+                       
+</section>
+
+{% endblock %}

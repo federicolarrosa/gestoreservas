@@ -1,0 +1,320 @@
+============================= BOOKING =============================
+<div>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="{% static 'images/reserve-slide2.jpg' %}" class="grid image-link">
+                    <img src="{% static 'images/reserve-slide2.jpg' %}" class="img-fluid" alt="#">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="{% static 'images/reserve-slide1.jpg' %}" class="grid image-link">
+                    <img src="{% static 'images/reserve-slide1.jpg' %}" class="img-fluid" alt="#">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="{% static 'images/reserve-slide3.jpg' %}" class="grid image-link">
+                    <img src="{% static 'images/reserve-slide3.jpg' %}" class="img-fluid" alt="#">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="{% static 'images/reserve-slide1.jpg' %}" class="grid image-link">
+                    <img src="{% static 'images/reserve-slide1.jpg' %}" class="img-fluid" alt="#">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="{% static 'images/reserve-slide2.jpg' %}" class="grid image-link">
+                    <img src="{% static 'images/reserve-slide2.jpg' %}" class="img-fluid" alt="#">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="{% static 'images/reserve-slide3.jpg' %}" class="grid image-link">
+                    <img src="{% static 'images/reserve-slide3.jpg' %}" class="img-fluid" alt="#">
+                </a>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+</div>
+<!--//END BOOKING -->
+<!--============================= RESERVE A SEAT =============================-->
+<section class="reserve-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>{{ restaurante.nombre }}</h5>
+                <p><span>$$$</span>$$</p>
+                <p class="reserve-description">Cocina innovadora, combinada con vinos finos en un ambiente moderno.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="reserve-seat-block">
+                    <div class="reserve-rating">
+                        <span>9.5</span>
+                    </div>
+                    <div class="review-btn">
+                        <a href="#" class="btn btn-outline-primary">Escribe un comentario</a>
+                        <span>34 Comentarios</span>
+                    </div>
+                    <!--============== Button trigger modal ====================-->
+                    <div class="reserve-btn">
+                        <div class="featured-btn-wrap">
+                            <a href="#reserva" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">RESERVAR MESA</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--======================== Modal ==========================-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Reservar</h5>
+                    <button type="button d-flex justify-content-end" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                      <div class="form-row d-flex justify-content-center">
+                        <div class="col-md-6 mb-4">
+                          <label for="validationDefault01">Nombre</label>
+                          <input type="text" class="form-control" id="validationDefault01" placeholder="Nombre (Obligatorio)" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <label for="validationDefault02">Apellido</label>
+                          <input type="text" class="form-control" id="validationDefault02" placeholder="Apellido (Obligatorio)" required>
+                        </div>
+                      </div>
+                      <div class="form-row d-flex justify-content-center">
+                        <div class="col-md-6 mb-3">
+                          <label for="validationDefault03">E-mail</label>
+                          <input type="email" class="form-control" id="validationDefault03" placeholder="E-mail (Obligatorio)" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="validationDefault04">Celular</label>
+                          <input type="tel" class="form-control" id="validationDefault04" placeholder="Celular (Obligatorio)" required>
+                        </div>
+                        <div class="form-row d-flex justify-content-center">
+                            <div class="col-md-3 mb-3">
+                              <label for="validationDefault05">Personas</label>
+                                <select class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
+                            </div>
+                            <div class="col-md-9 mb-3">
+                              <label for="validationDefault05">Día</label>
+                              <input type="date"  autocomplete="on" class="form-control" id="validationDefault05"  required>
+                                <label for="validationDefault05">Hora</label>
+                                <input type="time" class="form-control" list="listahorasdeseadas" required>
+                                <datalist id="listahorasdeseadas">
+                                    <label for="validationDefault05">Hora promedio de irse</label>
+                                <input type= "time" class="form-control" list="listahorasdeseadas" required>
+                                <datalist id="listahorasdeseadas">
+
+                                   <option value="16:00">
+                                   <option value="16:30">
+                                   <option value="17:00">
+                                   <option value="17:30">
+                                   <option value="18:00">
+                                   <option value="18:30">
+                                   <option value="19:00">
+                                   <option value="19:30">
+                                   <option value="20:00">
+                                   <option value="20:30">
+                                   <option value="21:00">
+                                   <option value="21:30">
+                                   <option value="22:00">
+                                   <option value="22:30">
+                                   <option value="23:00">
+                                   <option value="23:30">
+                                   <option value="00:00">
+                                </datalist>
+                                
+                            </div>
+                        </div>
+                      </div>
+                      <button onClick=location.href="/listado/gracias/" class="btn btn-primary" type="submit">Reservar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//END RESERVE A SEAT -->
+<!--============================= BOOKING DETAILS =============================-->
+<section class="light-bg booking-details_wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 responsive-wrap">
+                <div class="booking-checkbox_wrap">
+                    <div class="booking-checkbox">
+                        <p>Tasty Hand-Pulled Noodles es un restaurante de estilo de los años 50 ubicado en Madison, Wisconsin. Inaugurado en 1946 por Mickey Weidman, y ubicado justo al otro lado de la calle del Camp Randall Stadium, se ha convertido en una tradición popular del día del juego entre muchos fanáticos del Badger. El comensal es bien conocido por sus selecciones de desayuno, especialmente el Scrambler, que es un gran montículo de papas, huevos, queso, salsa y la elección de los clientes de otras coberturas.</p>
+                        <p>Mickies también ha aparecido en "Todd's Taste of the Town" durante una de las transmisiones de fútbol americano universitario de ESPN. Somos uno de los mejores restaurantes chinos en el área de Nueva York, Nueva York. Hemos sido reconocidos por nuestra excelente cocina china y asiática, excelente menú chino y excelentes especialidades en restaurantes.</p>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="custom-checkbox">
+                   <span class="ti-check-box"></span>
+                   <span class="custom-control-description">Wi-Fi</span>
+                 </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="custom-checkbox">
+                 <span class="ti-check-box"></span>
+                 <span class="custom-control-description">Permitido fumar</span>
+               </label> </div>
+                        <div class="col-md-4">
+                            <label class="custom-checkbox">
+                <span class="ti-check-box"></span>
+                <span class="custom-control-description">Estacionamiento</span>
+              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="custom-checkbox">
+              <span class="ti-check-box"></span>
+              <span class="custom-control-description">Acepta tarjetas de crédito/débito</span>
+            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-checkbox_wrap mt-4">
+                    <h5>34 Comentarios</h5>
+                    <hr>
+                    <div class="customer-review_wrap">
+                        <div class="customer-img">
+                            <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
+                            <p>Amanda G</p>
+                            <span>35 Comentarios</span>
+                        </div>
+                        <div class="customer-content-wrap">
+                            <div class="customer-content">
+                                <div class="customer-review">
+                                    <h6>Los mejores fideos en la ciudad de Newyork.</h6>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span class="round-icon-blank"></span>
+                                    <p>Comentado hace 2 días</p>
+                                </div>
+                                <div class="customer-rating">8.0</div>
+                            </div>
+                            <p class="customer-text">Me encantan los fideos aquí, pero es muy raro que llegue aquí. El personal es muy agradable, y usted debería estar sentado rápidamente. Por lo general me dan los fideos hechos a mano en una sopa. Los fideos de cordero también son excelentes. Si quieres que tus fideos sean un poco masticables, consigue los fideos cortados con cuchilla, que también son increíbles. Sus albóndigas son grandes mojadas en su salsa de chile.
+                            </p>
+                            <p class="customer-text">Me encanta cómo puedes ver la cocina y verlos hacer los fideos y, definitivamente se puede decir que se trata de un establecimiento familiar. Los precios son excelentes, con un plato que puede ser de $9.
+                            </p>
+                            <ul>
+                                <li><img src="images/review-img1.jpg" class="img-fluid" alt="#"></li>
+                                <li><img src="images/review-img2.jpg" class="img-fluid" alt="#"></li>
+                                <li><img src="images/review-img3.jpg" class="img-fluid" alt="#"></li>
+                            </ul>
+                            <span>A 28 personas le fue útil este comentario</span>
+                            <a href="#"><span class="icon-like"></span>Útil</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="customer-review_wrap">
+                        <div class="customer-img">
+                            <img src="images/customer-img2.jpg" class="img-fluid" alt="#">
+                            <p>Kevin W</p>
+                            <span>17 Comentarios</span>
+                        </div>
+                        <div class="customer-content-wrap">
+                            <div class="customer-content">
+                                <div class="customer-review">
+                                    <h6>Una tienda de la vieja escuela</h6>
+                                    <span class="customer-rating-red"></span>
+                                    <span class="round-icon-blank"></span>
+                                    <span class="round-icon-blank"></span>
+                                    <span class="round-icon-blank"></span>
+                                    <span class="round-icon-blank"></span>
+                                    <p>Comentado hace 3 meses</p>
+                                </div>
+                                <div class="customer-rating customer-rating-red">2.0</div>
+                            </div>
+                            <p class="customer-text">Las albóndigas eran tan grasosas... los fideos de camarón fritos eran los mismos. Tanto aceite y grasa era difícil de comer. Los fideos de camarón solo vienen con 3 camarones (por suerte el plato fue barato)</p>
+                            <p class="customer-text">La sopa de fideos de carne estaba bien. Agregué vinagre negro en el caldo para darle un sabor extra. La tienda en sí es realmente sucia (como es el caso en muchos restaurantes en Chinatown). No limpian las mesas después de que los clientes hayan comido.</p>
+                            <span>A 28 personas le fue útil este comentario</span>
+                            <a href="#"><span class="icon-like"></span>Útil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 responsive-wrap">
+                <div class="contact-info">
+                    <img src="images/map.jpg" class="img-fluid" alt="#">
+                    <div class="address">
+                        <span class="icon-location-pin"></span>
+                        <p> {{ restaurante.ubicacion}}</p>
+                    </div>
+                    <div class="address">
+                        <span class="icon-screen-smartphone"></span>
+                        <p> {{ restaurante.telefono }}</p>
+                    </div>
+                    <div class="address">
+                        <span class="icon-link"></span>
+                        <p> {{ restaurante.email}}</p>
+                    </div>
+                    <div class="address">
+                        <span class="icon-clock"></span>
+                        <p> {{ restaurante.horarios}}<br>
+                            <span class="open-now">ABIERTO</span></p>
+                    </div>
+                    <a href="#" class="btn btn-outline-primary btn-contact">ENVIAR UN MENSAJE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Magnific popup JS -->
+<script src="js/jquery.magnific-popup.js"></script>
+<!-- Swipper Slider JS -->
+<script src="js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+<script>
+    if ($('.image-link').length) {
+        $('.image-link').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            }
+        });
+    }
+    if ($('.image-link2').length) {
+        $('.image-link2').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            }
+        });
+    }
+</script>

@@ -1,0 +1,107 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}   
+
+<section>
+
+
+<div class="row light-bg detail-options-wrap justify-content-center">
+    <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">
+        <div class="featured-place-wrap">
+            <a href="#"> 
+               
+                <div class="featured-title-box">
+                    <h6>Restaurante: {{object.restaurante}}
+                        <hr>
+                        Numero de reserva: {{object.pk}}
+                    </h6>
+                    
+                    
+                    <ul>
+                        <li>
+                            
+                            <p>Hora: {{object.hora}}</p>
+                        </li>
+                        <li>
+                           
+                            <p>Dia: {{object.dia}}</p>
+                        </li>
+                        <li>
+                            
+                            <p>Personas: {{object.personas}}</p>
+                        </li>
+                        
+                        <li>
+                                <hr>
+                                <div class="update-btn">
+                                    <div class="featured-btn-wrap">
+                                        <a href="#update" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">MODIFICAR DATOS</a>
+                                    </div>
+                                </div>
+                        </li>
+                        <li>
+                                <hr>
+                                <div class="delete-btn">
+                                    <div class="featured-btn-wrap">
+                                        <a href="#delete" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#deleteModal">ELIMINAR</a>
+                                    </div>
+                                </div>
+                        </li>
+                    </ul>
+                 <div><p> </p></div>   
+                 <div <div class="alert alert-danger" role="alert">Para cancelar o modificar las reservas tiene que ser con un plazo minimo de anterioridad de 1 dia </div>               
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar datos</h5>
+                    <button type="button d-flex justify-content-end" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="site-form" action="" method="POST">
+                        {% csrf_token %} 
+                        <table>{{ form|crispy }}
+                            <td></td>
+                            <td><button type="submit" class="btn btn-primary btn-block"> Modificar </button></td>
+                        </table>             
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Eliminar reserva</h5>
+                        <button type="button d-flex justify-content-end" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="site-form" action="/reservas/reservas" method="POST">
+                            {% csrf_token %} 
+                            <table> 
+                                <td>Estas seguro que quieres eliminar la reserva? {{reservas.pk}}  </td>
+                                <td><button type="submit" class="btn btn-primary btn-block"> Si, eliminar</button></td>    
+                            </table> 
+                            <div class="alert alert-danger" role="alert">Para CANCELAR toca afuera de la ventana</div>
+                        </form>
+                    </div> 
+                </div>
+            </div>
+        </div>
+</section>
+
+{% endblock %}

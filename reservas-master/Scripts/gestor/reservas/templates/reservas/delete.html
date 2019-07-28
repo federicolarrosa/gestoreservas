@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form group">
+            <legend class="border bottom mb-4">Eliminar reserva</legend>
+            <p>Estas seguro que quieres eliminar la reserva {{reserva.id}}</p>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Si, eliminar</button>
+            <a class="btn btn-outline-info" href="#">Cancelar</button>
+        </div>
+    </form>
+</div>
+  
+
+{% endblock %}
+

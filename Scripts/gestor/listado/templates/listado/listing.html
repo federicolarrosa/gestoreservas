@@ -1,0 +1,166 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    
+<!-- Filtros -->
+
+<section>
+    <div class="row detail-checkbox-wrap">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">wifi</span>
+            </label>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Permitido fumar</span>
+            </label>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Estacionamiento</span>
+            </label>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Acepta tarjetas de crédito/débito</span>
+            </label>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="custom-control custom-checkbox"> </label>
+                <div><strong>Selecione su comida favorita</strong>
+                    <select name="inlineFormCustomSelect" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect2">
+                        <option selected="selected">Vegana</option>
+                        <option value="1">Parrilla</option>
+                        <option value="2">Pastas</option>
+                        <option value="3">Pizzas</option>
+                    </select>
+                </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="custom-control custom-checkbox"> </label>
+                <div><strong>Filtrar por:</strong>
+                    <select name="inlineFormCustomSelect" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect2">
+                        <option selected="selected">Mejores resultados</option>
+                        <option value="1">Más cercanos</option>
+                        <option value="2">Más baratos</option>
+                    </select>
+                </div>
+        </div>
+    </div>
+             
+<!-- Detalle de restaurante -->
+
+  {% if results %}
+<section class="main-block light-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="add-listing-wrap">
+                    <
+                    <h2>Resultados para tu busqueda </h2>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+                    {% for results in restaurante %}
+                    {{ restaurante|escape }}
+        <div class="row light-bg detail-options-wrap justify-content-center">
+            <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">
+                <div class="featured-place-wrap">
+                    <a href="{% url 'detalles' pk=restaurante.pk %}"> 
+                        <img src="{% static 'images/featured1.jpg' %}" class="img-fluid" alt="#">
+                        <span class="featured-rating-orange ">6.5</span>
+                        <div class="featured-title-box">
+                            <h6>{{restaurante.nombre}}</h6>
+                            <p>Restaurante </p> <span>• </span>
+                            <p>3 Comentarios</p> <span> • </span>
+                            <p><span>$$$</span>$$</p>
+                            <ul>
+                                <li>
+                                    <span class="icon-location-pin"></span>
+                                    <p>{{restaurante.ubicacion}}</p>
+                                </li>
+                                <li>
+                                    <span class="icon-screen-smartphone"></span>
+                                    <p>{{restaurante.telefono}}</p>
+                                </li>
+                                <li>
+                                    <span class="icon-link"></span>
+                                    <p>{{restaurante.email}}</p>
+                                </li>
+                            </ul>
+                                        
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+                        {% endfor %} 
+                        {% else %}
+
+                        <section class="main-block light-bg">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="add-listing-wrap">
+                                            <h2>Ups Perdon</h2>
+                                            <h2>No encontramos tu busqueda.</h2> 
+                                            <h2>¿Quizas te gusten estos?</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </section>
+                                {% for restaurante in restaurantes %}
+                                
+                                <div class="row light-bg detail-options-wrap justify-content-center">
+                                    <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">
+                                        <div class="featured-place-wrap">
+                                            <a href="{% url 'detalles' pk=restaurante.pk %}">
+                                                <img src="{% static 'images/featured1.jpg' %}" class="img-fluid" alt="#">
+                                                <span class="featured-rating-orange ">6.5</span>
+                                                <div class="featured-title-box">
+                                                    <h6>{{restaurante.nombre}}</h6>
+                                                    <p>Restaurante </p> <span>• </span>
+                                                    <p>3 Comentarios</p> <span> • </span>
+                                                    <p><span>$$$</span>$$</p>
+                                                    <ul>
+                                                        <li>
+                                                            <span class="icon-location-pin"></span>
+                                                            <p>{{restaurante.ubicacion}}</p>
+                                                        </li>
+                                                        <li>
+                                                            <span class="icon-screen-smartphone"></span>
+                                                            <p>{{restaurante.telefono}}</p>
+                                                        </li>
+                                                        <li>
+                                                            <span class="icon-link"></span>
+                                                            <p>{{restaurante.email}}</p>
+                                                        </li>
+                                                    </ul>
+                                
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                        {% endif %}
+                    
+</section>
+   
+    {% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+ 
+<!-- Imagenes cabecera -->
+
+<!-- <div class="text-center">
+        <img src="{% static 'images/descarga1.jpg' %}" class="img-fluid" alt="Responsive image">
+        <img src="{% static 'images/descarga2.jpg' %}" class="img-fluid" alt="Responsive image">
+</div> -->
+
+<!-- Detalles restaurante -->
+
+<section class="light-bg booking-details_wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 responsive-wrap">
+                <div class="booking-checkbox_wrap">
+                    <div class="booking-checkbox">
+                        
+                        <h5>{{ restaurantes.nombre }}</h5>
+                    <hr>    
+                    <img src="{% static 'images/reserve-slide2.jpg' %}" class="img-fluid" alt="#">
+                    <hr>    
+                    <p>
+                            Desde 1960 el Bungalow Suizo lo recibe con lo mejor de la cocina suiza y una atención que harán de su visita un momento para recordar y recomendar.
+                        </p>
+                        
+                        <p>
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                           <p> wifi: {{restaurantes.wifi}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p> Permitido fumar: {{restaurantes.fumar}} </p> 
+                        </div>
+                        <div class="col-md-4">
+                            <p> Estacionamiento: {{restaurantes.estacionamiento}}  </p> 
+                        </div>
+                        <div class="col-md-4">
+                            <p> Acepta tarjetas: {{restaurantes.tarjetas}} </p>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="col-md-4 responsive-wrap">
+                <div class="contact-info">
+                    
+                    <div class="address">
+                        <span class="icon-location-pin"></span>
+                        <p> {{ restaurantes.ubicacion}}</p>
+                    </div>
+                    <div class="address">
+                        <span class="icon-screen-smartphone"></span>
+                        <p> {{ restaurantes.telefono_restaurante }}</p>
+                    </div>
+                    <div class="address">
+                        <span class="icon-link"></span>
+                        <p> {{ restaurantes.email}}</p>
+                    </div>
+                    <div class="address">
+                        <span class="icon-clock"></span>
+                        <p> {{ restaurantes.horarios}}<br>
+                            </p>
+                    </div>
+                    <hr>
+                    <section class="light-bg booking-details_wrap">
+                        <div class="container">
+                            <div class="col-md-8 responsive-wrap">
+                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample">RESERVAR MESA</a>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Ventana de reservas -->
+                    
+                    <div class="collapse" id="collapseExample">
+                        <div class="container">
+                           
+                                                <div class="booking-checkbox">
+                                                    <hr>
+                                                    
+                                                    <h3 class="row align-items-center justify-content-center">Reserva tu mesa</h3>
+                                                </div>
+                                                <hr>
+                                                <form class="form" action="" method="POST">
+                                                    {% csrf_token %}
+                                                    {% for hidden in form.hidden_fields %}
+                                                    {{ hidden }}
+                    
+                                                    {% endfor %}                    
+                                                        {{ form|crispy }}
+                                                        {%for reserva in reservas %}
+                                                        mesa{{reserva.pk}}
+                                                        {% if reserva.mesa == restaurantes.mesas_total %}
+                                                        <p>reseva{{reservas.mesa}} mesa{{restaurantes.mesas_total}}</p>
+                    
+                                                        {% else %}
+                                                        <p>No hay mesas disponibles</p>
+                                                        {% endif %}
+                                                        {%endfor%}
+                                                        <input type="hidden" name="restaurante" value="{{ restaurantes.pk }}">
+                                                        <input type="hidden" name="nombre" value="{{ user.first_name }}">
+                                                        <input type="hidden" name="apellido" value="{{ user.last_name }}">
+                                                    </table>
+                                                    <p> </p>
+                                                    <td><button type="submit" class="btn btn-primary btn-block"> Reservar </button></td>
+                    
+                                                </form>
+                                       </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+{% endblock %}

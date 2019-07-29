@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Formulario de inicio de sesion -->
+
+<div class="container container-register d-flex justify-content-center">
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+   <h4 class="card-title mt-3 text-center">Iniciar sesion</h4>
+     <a href="" class="btn btn-block btn-twitter"><i class="ti-twitter"> </i>Ingresar con Twitter</a>
+     <a href="" class="btn btn-block btn-facebook"><i class="ti-facebook"> </i>Ingresar con facebook</a>
+   </p>
+   <p class="divider-text">
+     <span class="bg-light">O</span>
+   </p>
+<form method="POST">
+{% csrf_token %}
+<table>
+    {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td><button type="submit" class="btn btn-primary btn-block"> Ingresar  </button></td>
+        </tr>
+</table>
+
+<p class="text-center">No tienes una cuenta? <a href="/registro" >Registrate!</a> </p>                                                                 
+</form>
+</article>
+</div> 
+
+</div> 
+
+{% endblock %}

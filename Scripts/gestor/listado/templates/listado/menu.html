@@ -1,0 +1,68 @@
+{% extends 'home/base.html' %}
+<!-- Bootstrap CSS -->
+
+{% load static %}
+
+{% block content %}
+
+    <!--============================= agrega contenido =============================-->
+  
+    <section class="main-block light-bg" id="menu-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="add-listing-wrap">
+                    <h2>Menu</h2>
+                    <p>Aca podras elegir la comida que mas te guste para agregar a tu reserva </p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </section>
+    
+    <div class="container">
+       
+        <form class="site-form" method="POST">
+            {% csrf_token %}
+            <div class="table-responsive"></div>
+            <table class="table">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">#</th>
+                        <th scope="col">CANTIDAD</th>
+                        <th scope="col">MENU</th>
+                        <th scope="col">INGREDIENTES</th>
+                        <th scope="col">PRECIO</th>
+                    </tr>
+                </thead>
+                {% for menu in menu %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{form.campo}}</th>
+                        <td>{{form.repeticion}}</td>
+                        <td>{{menu.nombre}}</td>
+                        <td>{{menu.ingredientes}}</td>
+                        <td>$ {{menu.precio}}</td>
+                    </tr>
+                
+            {% endfor %}
+    
+                </tbody>
+            </table>
+            <pre>
+
+            </pre>
+            <button type="submit" class="btn btn-primary btn-lg btn-block"> Reservar y Pagar </button>
+            <pre>
+            
+            </pre>
+            </div>
+        
+            
+    
+        
+        </form>
+
+    </div> 
+    
+{% endblock %}

@@ -11,7 +11,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
 """
 
-
+os.environ["DJANGO_SETTINGS_MODULE"] = "{{ gestor }}.settings"
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gestor.settings')
 

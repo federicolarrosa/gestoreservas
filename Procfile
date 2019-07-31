@@ -1,2 +1,2 @@
 
-web: gunicorn gestor.wsgi.application
+web: gunicorn gestor.settings.wsgi

@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'django_forms_bootstrap',
+    'bootstrap4',
     'crispy_forms',
+
+    
+    
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -66,7 +69,7 @@ ROOT_URLCONF = 'gestor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,2 +1,2 @@
 
-web: gunicorn Scripts.gestor.gestor.wsgi
+web: gunicorn gestor.wsgi --log-file -

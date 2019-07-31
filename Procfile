@@ -1,1 +1,2 @@
-web: gunicorn gestor/gestor/gestor.wsgi
+web: gunicorn gestor.wsgi
+web: gunicorn gestor.wsgi.application
